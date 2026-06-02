@@ -1,0 +1,23 @@
+# Robots.txt for ARRTECH APPS AND DATA SOLUTIONS
+# https://arrtech.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://arrtech.com/sitemap.xml
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow search engines to crawl important pages
+Allow: /solutions/*
+Allow: /company
+Allow: /contact
+Allow: /team
+Allow: /governance
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
