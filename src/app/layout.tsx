@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Nunito_Sans } from 'next/font/google';
 import '@/styles/globals.css';
-import { Navbar } from '@/components/layout/Navbar';
-import { Footer } from '@/components/layout/Footer';
+import { ConditionalNavbar, ConditionalFooter } from '@/components/layout/ConditionalLayoutElements';
 import { ElevenLabsWidget } from '@/components/layout/ElevenLabsWidget';
 
 import { DynamicTitle } from '@/components/layout/DynamicTitle';
@@ -105,11 +104,11 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen bg-[#0f172a] text-white antialiased font-sans overflow-x-hidden" suppressHydrationWarning>
         <DynamicTitle />
-        <Navbar />
+        <ConditionalNavbar />
         <main className="flex-grow">
           {children}
         </main>
-        <Footer />
+        <ConditionalFooter />
         <ElevenLabsWidget />
       </body>
     </html>
