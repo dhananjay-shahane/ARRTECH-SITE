@@ -72,7 +72,7 @@ export default function AuthForm({ mode = 'login' }: { mode?: 'login' | 'registe
         return
       }
 
-      const endpoint = isLogin ? '/otp/v1/auth/login' : '/otp/v1/auth/signup'
+      const endpoint = isLogin ? '/otp/api/v1/auth/login' : '/otp/api/v1/auth/signup'
       const payload = isLogin 
         ? { username, password }
         : { fullName, username, password }
@@ -101,7 +101,7 @@ export default function AuthForm({ mode = 'login' }: { mode?: 'login' | 'registe
         
         // Reset form
         if (!isLogin) {
-          router.push('/otp/login')
+          router.push('/otp/v1/auth/login')
         }
         setPassword('')
         setConfirmPassword('')
@@ -201,7 +201,7 @@ export default function AuthForm({ mode = 'login' }: { mode?: 'login' | 'registe
       <div className="mt-6 text-center">
         <button 
           onClick={() => {
-            router.push(isLogin ? '/otp/signup' : '/otp/login')
+            router.push(isLogin ? '/otp/v1/auth/signup' : '/otp/v1/auth/login')
           }}
           className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-medium focus:outline-none"
         >

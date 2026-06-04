@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function OtpRootRedirect() {
-  redirect('/otp/login')
+  redirect('/otp/v1/auth/login')
 }
