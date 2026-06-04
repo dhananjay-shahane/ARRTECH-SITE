@@ -72,7 +72,7 @@ export default function AuthForm({ mode = 'login' }: { mode?: 'login' | 'registe
         return
       }
 
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register'
+      const endpoint = isLogin ? '/otp/api/v1/auth/login' : '/otp/api/v1/auth/signup'
       const payload = isLogin 
         ? { username, password }
         : { fullName, username, password }
