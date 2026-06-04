@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function AuthForm() {
-  const [isLogin, setIsLogin] = useState(true)
+export default function AuthForm({ mode = 'login' }: { mode?: 'login' | 'register' }) {
+  const [isLogin, setIsLogin] = useState(mode === 'login')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -15,6 +15,10 @@ export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false)
   
   const router = useRouter()
+
+  useEffect(() => {
+    setIsLogin(mode === 'login')
+  }, [mode])
 
   useEffect(() => {
     // Check token expiration on mount
@@ -96,7 +100,9 @@ export default function AuthForm() {
         setMessage(`${isLogin ? 'login' : 'register'} successful.\nPlease reopen ontime publisher app.`)
         
         // Reset form
-        if (!isLogin) setIsLogin(true)
+        if (!isLogin) {
+          router.push('/otp/v1/auth/login')
+        }
         setPassword('')
         setConfirmPassword('')
       }
@@ -195,9 +201,7 @@ export default function AuthForm() {
       <div className="mt-6 text-center">
         <button 
           onClick={() => {
-            setIsLogin(!isLogin)
-            setError('')
-            setMessage('')
+            router.push(isLogin ? '/otp/v1/auth/signup' : '/otp/v1/auth/login')
           }}
           className="text-sm text-blue-600 hover:text-blue-800 hover:underline font-medium focus:outline-none"
         >
